@@ -1,0 +1,14 @@
+services:
+  server:
+    image: nginx:latest
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+        read_only: true
+      - type: bind
+        source: ./frontend
+        target: /usr/share/nginx/html
+        read_only: true
+    ports:
+      - 8080:80
